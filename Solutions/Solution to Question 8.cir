@@ -1,0 +1,7 @@
+
+.model mymos nmos kp=200u Vt0=1v
+Vgs 1 0 DC {v1}
+Vds 2 0 DC 1
+M1 2 1 0 0 mymos L=100u W=10u
+.dc vds 0 1.8 0.1
+.step param v1 0 2 0.1

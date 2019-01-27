@@ -1,0 +1,34 @@
+DC Step Response
+
+*Netlist begins here
+*--------------------------
+
+*Define step input.
+*Step input definition is done using a pulse with positive pulse width greater than the time period.
+*If the rise and fall times aren't important, specify values like 10p or 20p.
+
+Vcc 1 0 pulse(0 5 1m 10p 10p 2 1)
+
+*Defining rest of the circuit.
+
+R1 1 2 {R}
+C1 2 0 {C}
+
+*Parameter Variation
+*--------------------------
+
+*.param Vdc=5
+*.step param Vdc 1 5 1
+
+.param C=15u
+*.step param C 1u 50u 5u
+
+.param R=1k
+*.step param R 1k 100k 5k
+
+*Analysis
+*--------------------------
+
+.op
+*.tran 1m 100m
+

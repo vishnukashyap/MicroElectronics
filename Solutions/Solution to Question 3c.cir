@@ -1,0 +1,31 @@
+AC Response (Filter)
+
+*Netlist begins here
+*--------------------------
+
+*Defining a sine input and an ac input.
+Vcc 1 0 ac sine(2 10m 1k 0 0)
+
+*Defining rest of the circuit.
+R1 1 2 {R}
+C1 2 0 {C}
+
+*Parameter Variation
+*--------------------------
+
+*.param Vdc=5
+*.step param Vdc 1 5 1
+
+.param C=1u
+*.step param C 1u 50u 5u
+
+.param R=5k
+*.step param R 1k 100k 5k
+
+*Analysis
+*--------------------------
+
+.op
+*.tran 1m 10m
+*.ac dec 1 10g 10
+*.tf V(2) Vcc

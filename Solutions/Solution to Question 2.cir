@@ -1,0 +1,7 @@
+Filter (first line in ltspice is commented by default)
+C1 1 2 1n
+C2 3 0 0.08n
+R1 2 0 10k
+R2 2 3 10k
+Vin 1 0 ac sin(0 50m 1k)
+.ac dec 100 10k 1000k

@@ -1,0 +1,11 @@
+* C:\Users\ADMIN\Desktop\Draft1.asc
+R1 2 0 1250
+C1 3 2 80p
+C2 1 0 1600p
+L1 1 3 312.5m
+V1 1 0 AC SINE(1 10m 1k)
+*.op
+.trans 0 10m
+.four 1k I(V1)
+*.ac dec 2000 10k 100k
+.end

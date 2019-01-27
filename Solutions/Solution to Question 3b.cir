@@ -1,0 +1,36 @@
+DC Pulse Response
+
+*Netlist begins here
+*--------------------------
+
+*Define pulse input.
+*If the rise and fall times aren't important, specify values like 10p or 20p.
+
+Vcc 1 0 pulse(0 5 1m 10p 10p 20m 40m)
+
+*Defining rest of the circuit.
+
+R1 1 2 {R}
+C1 2 0 {C}
+
+*Parameter Variation
+*--------------------------
+
+*.param Vdc=5
+*.step param Vdc 1 5 1
+
+* 3 cases- a) R=1k, C=1u plot till 100ms
+* b) R=10k, C=2u plot till 300ms
+* c) R=100k, C=20u plot till 15s to get an idea.
+
+.param C=20u
+*.step param C 1u 50u 5u
+
+.param R=100k
+*.step param R 1k 5k 1k
+
+*Analysis
+*--------------------------
+
+.op
+*.tran 1m 1
