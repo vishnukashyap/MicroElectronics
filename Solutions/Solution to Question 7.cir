@@ -1,0 +1,17 @@
+**clipper circuit**
+
+*.model DIN4007 D (IS=7.02767e-09 RS=0.0341512 N=1.80803 EG=1.05743 XTI=5 BV=1000 IBV=5e-08 CJO=1e-11 VJ=0.7 M=0.5 FC=0.5 TT=1e-07 KF=0 AF=1)
+.model DIN4007 D ()
+
+V1 1 0 ac sin(0 5 1)
+R1 1 2 1k
+D1 0 2 DIN4007
+
+*.op
+.tran 1 10 0
+*Method 1: To perform fourier analysis, use .four (only after a .tran directive) followed by fundamental frequency of input and output node at which to calculate. Go to View > Spice Error Log. It will show the harmonic components, along with the THD and pf. If you use a Mac, after you execute .four, check the working directory. You'll find a newly created .log file. The desired table is in the log file.
+*NOTE: PF can only be calculated via Fourier analysis of currents.
+.four 1 V(2) V(1) I(V1)
+*Method 2: Plot the graph in .tran, right click in the window, View > FFT. You can get the harmonic components from here.
+
+.end
