@@ -1,0 +1,23 @@
+Full Wave Bridge Rectifier with Smoothing Capacitor
+
+.MODEL DIN4007 d(IS=7.02767e-09 RS=0.0341512 N=1.80803 EG=1.05743
++XTI=5 BV=1000 IBV=5e-08 CJO=1e-11
++VJ=0.4 M=0.5 FC=0.5 TT=1e-07
++KF=0 AF=1)
+
+V1 1 0 Sin(0 2.5 0.2k)
+R1 1 2 1k
+R2 3 4 12k
+C1 3 4 1u
+D1 4 2 DIN4007
+D2 2 3 DIN4007
+D3 0 3 DIN4007
+D4 4 0 DIN4007
+
+*Add trace V(3)-V(4) to view rectified DC output
+*Add trace V(1) to view AC input
+*Uncomment C1 statement to view smoothening effect of the capacitor
+
+.trans 1m 40m
+
+.END
