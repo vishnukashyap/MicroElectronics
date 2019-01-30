@@ -1,0 +1,14 @@
+VCCS
+
+V1 1 0 ac sin(1 15m 100)
+
+Ri 1 0 2Meg
+Ro 2 0 2Meg
+Rl 2 0 1k
+
+Gamp 2 0 1 0 100
+
+*.op
+*.tran 1m 100m
+*.four 100 V(2) I(Ro) I(Gamp) I(V1)
+.noise V(2) V1 dec 10 1 1Meg

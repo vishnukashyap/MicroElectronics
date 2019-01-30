@@ -1,0 +1,18 @@
+FeedBack Amp
+
+R1 5 2 1K
+Ri 2 0 2Meg
+Ro 3 4 200
+Rf 2 4 10K
+Ci 1 5 10u
+Cl 4 0 100n
+
+V1 1 0 ac sin(1 50m 1k)
+E1 3 0 2 0 100
+
+*.op
+*.tran 1m 10m
+*.four 1k V(4) I(Ro) I(E1) I(V1) V(1)
+*.ac dec 10 1 1Meg
+.noise V(4) V1 dec 10 1 1Meg 
+

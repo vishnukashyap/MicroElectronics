@@ -1,0 +1,29 @@
+Non Inverting Amp
+
+*R1 0 1 1k
+R1 0 1 {R}
+Ri 1 2 2Meg
+Ro 3 4 100
+Rf 1 4 9k
+*Cl 4 0 100n
+Cl 4 0 {C}
+
+*V1 2 0 50m
+V1 2 0 ac sin(1 50m 300)
+EA1 3 0 1 2 100
+
+.param R 5000
+.step param R 1000 9000 1000
+
+.param C 100n
+.step param C 10n 1u 10n
+
+*While performing any analysis other than ac, it'd be better to comment out the parameter sweeps.
+*-------- 
+
+*.op
+*.dc V1 -15 15 0.1
+*.tran 1m 10m
+*.four 300 V(4) I(Ro) I(EA1) I(V1) V(1)
+.ac dec 10 1 10Meg
+*.noise V(4) V1 dec 10 1 1Meg

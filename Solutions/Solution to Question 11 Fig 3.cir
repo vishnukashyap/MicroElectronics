@@ -1,0 +1,16 @@
+CCVS
+
+Ri 1 2 100
+Ro 3 4 100
+Cl 4 0 100n
+
+Vm 2 0 0
+Ii 1 0 ac sin(100m 100m 500 0 0 0)
+HIi 3 0 Vm 10
+
+
+*.op
+*.tran 1m 10m
+*.four 500 V(4) I(Ro) I(HIi) I(Ii) V(3)
+*.ac dec 10 1 1g
+.noise V(4) Ii dec 10 1 1Meg

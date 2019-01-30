@@ -1,0 +1,13 @@
+CCCS
+
+Re 1 0 100
+Ri 1 3 50
+Ro 2 0 2meg
+Vm 3 0 0
+Ii 1 0 ac sin(50m 10m 500 0 0 0)
+F1 2 0 Vm 100
+
+*.op
+*.tran 1m 10m
+*.four 500 V(2) I(Ro) I(F1) I(Ii) V(3) V(1) I(Vm)
+.noise V(2) Ii dec 10 1 1Meg
