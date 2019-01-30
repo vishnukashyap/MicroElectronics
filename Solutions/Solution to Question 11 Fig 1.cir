@@ -6,7 +6,7 @@ Ro 3 4 100
 Cl 4 0 100n
 
 Vin 1 0 ac sin(1 50m 1k)
-E1 3 0 1 0 100
+E1 3 0 2 0 100
 
 *.op
 *.tran 1m 10m
