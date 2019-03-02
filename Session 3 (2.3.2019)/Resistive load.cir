@@ -1,0 +1,22 @@
+QUESTION: Design a common source amplifier which fulfills the following requirements,
+*Load should be PMOS.
+*Gain should be of 30 DB.
+*Unity gain bandwidth should be of 100 MHz.
+*********************************** 1.2um technology level=1 MODEL file ************************
+.MODEL  MY_NMOS NMOS LEVEL=1 KP=5E-005 VT0=.7 LAMBDA=0.01
+.MODEL  MY_PMOS PMOS LEVEL=1 KP=2E-005 VT0=-.7 LAMBDA=0.01
+************************************************************************************************
+M1 1 2 0 0 MY_NMOS L=350N W=700N
+*M2 1 0 3 3 MY_PMOS L=350N W=10n
+R1 3 1 580k
+VDD 3 0 5
+VGS 2 0 AC SIN(1 100M 1K)
+C1 1 0 2f
+***********************************************************************************************
+.OP
+*.TRAN 0.001N 10M
+*.DC VDD 0 3.3 0.02
+*.step param w 10n 500n 10n
+*.step param c 1f 100f 5f
+.AC DEC 100 10 10G
+.END
